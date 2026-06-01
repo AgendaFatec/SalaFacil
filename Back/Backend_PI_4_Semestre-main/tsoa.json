@@ -1,0 +1,22 @@
+{
+  "entryFile": "src/index.ts",
+  "noImplicitAdditionalProperties": "throw-if-extra",
+  "controllerPathGlobs": ["src/routes/*Router.ts"],
+  "routes": {
+    "routesDir": "src/routes",
+    "entryPoint": "src/index.ts",
+    "esm": true,
+    "authenticationModule": "src/auth/authentication.ts"
+  },
+  "spec": {
+    "outputDirectory": "src/docs",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "jwt": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}

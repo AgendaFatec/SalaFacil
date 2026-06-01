@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Usuario" ALTER COLUMN "microsoft_sub" DROP NOT NULL,
+ALTER COLUMN "userNome" DROP NOT NULL,
+ALTER COLUMN "userSenha" DROP NOT NULL;

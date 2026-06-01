@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Usuario" ALTER COLUMN "fotoUrl" SET DATA TYPE TEXT;

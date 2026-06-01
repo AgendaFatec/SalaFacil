@@ -1,0 +1,76 @@
+# ====================================================================
+# 🏫 SalaFácil - Unified .gitignore (Front-end & Back-end)
+# ====================================================================
+
+# 📦 Dependências
+node_modules/
+jspm_packages/
+web_modules/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# 🔐 Variáveis de Ambiente (Segurança)
+.env
+.env.*
+!.env.example
+
+# 🏗️ Build e Saídas de Compilação
+dist/
+dist-ssr/
+build/
+out/
+*.tsbuildinfo
+*.local
+
+# 🗄️ Banco de Dados e Uploads Locais
+**/src/generated/prisma
+**/uploads/*
+!**/uploads/.gitkeep
+
+# 📝 Logs e Relatórios
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# ⚡ Caches (Ferramentas, NPM, Vite, etc.)
+.npm/
+.eslintcache
+.stylelintcache
+.cache/
+.parcel-cache/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# 💻 Sistema Operacional e Editores de Código
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ⚙️ Arquivos de Runtime e Processos
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# 🧪 Testes e Outros
+coverage/
+*.lcov
+.nyc_output/
+*.tgz
+.yarn-integrity

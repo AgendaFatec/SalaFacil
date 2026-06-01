@@ -1,0 +1,2985 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Tecnologia": {
+				"properties": {
+					"idTecnologia": {
+						"type": "number",
+						"format": "double"
+					},
+					"nomeTecnologia": {
+						"type": "string"
+					},
+					"descricao": {
+						"type": "string"
+					},
+					"dataCriacao": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"idTecnologia",
+					"nomeTecnologia",
+					"dataCriacao"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CreateTecnologia": {
+				"properties": {
+					"nomeTecnologia": {
+						"type": "string"
+					},
+					"descricao": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"nomeTecnologia"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UpdateTecnologia": {
+				"properties": {
+					"nomeTecnologia": {
+						"type": "string"
+					},
+					"descricao": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"Inventario": {
+				"properties": {
+					"idInventario": {
+						"type": "number",
+						"format": "double"
+					},
+					"salaId": {
+						"type": "number",
+						"format": "double"
+					},
+					"salaNome": {
+						"type": "string"
+					},
+					"capacidadeAlunos": {
+						"type": "number",
+						"format": "double"
+					},
+					"fotoSala": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"statusInventario": {
+						"type": "string"
+					},
+					"dispositivos": {
+						"items": {
+							"properties": {
+								"quantidade": {
+									"type": "number",
+									"format": "double"
+								},
+								"statusDispositivo": {
+									"type": "string"
+								},
+								"patrimonio": {
+									"type": "string"
+								},
+								"tipoDispositivo": {
+									"type": "string"
+								},
+								"nomeDispositivo": {
+									"type": "string"
+								},
+								"idDispositivo": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"quantidade",
+								"statusDispositivo",
+								"tipoDispositivo",
+								"nomeDispositivo",
+								"idDispositivo"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"tecnologias": {
+						"items": {
+							"properties": {
+								"descricao": {
+									"type": "string"
+								},
+								"nomeTecnologia": {
+									"type": "string"
+								},
+								"idTecnologia": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"nomeTecnologia",
+								"idTecnologia"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"criadoEm": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"atualizadoEm": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"idInventario",
+					"salaId",
+					"statusInventario",
+					"dispositivos",
+					"tecnologias",
+					"criadoEm",
+					"atualizadoEm"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CreateInventario": {
+				"properties": {
+					"salaId": {
+						"type": "number",
+						"format": "double"
+					},
+					"dispositivoIds": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"tecnologiaIds": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"statusInventario": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"salaId"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"SalasComInventario": {
+				"properties": {
+					"idSala": {
+						"type": "number",
+						"format": "double"
+					},
+					"nomeSala": {
+						"type": "string"
+					},
+					"tipoSala": {
+						"type": "string"
+					},
+					"capacidadeAlunos": {
+						"type": "number",
+						"format": "double"
+					},
+					"fotoSala": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"disponibilidadeSala": {
+						"type": "boolean"
+					},
+					"inventario": {
+						"properties": {
+							"tecnologias": {
+								"items": {
+									"properties": {
+										"nomeTecnologia": {
+											"type": "string"
+										},
+										"idTecnologia": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"nomeTecnologia",
+										"idTecnologia"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"dispositivos": {
+								"items": {
+									"properties": {
+										"status": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"patrimonios": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"nomes": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"quantidade": {
+											"type": "number",
+											"format": "double"
+										},
+										"tipoDispositivo": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"nomes",
+										"quantidade",
+										"tipoDispositivo"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"idInventario": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"tecnologias",
+							"dispositivos",
+							"idInventario"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"idSala",
+					"nomeSala",
+					"tipoSala",
+					"disponibilidadeSala",
+					"inventario"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"DispositivoUpdateDTO": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"nome": {
+						"type": "string"
+					},
+					"quantidade": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"quantidade"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"TecnologiaUpdateDTO": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"nome": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UpdateInventario": {
+				"properties": {
+					"statusInventario": {
+						"type": "string"
+					},
+					"dispositivos": {
+						"items": {
+							"$ref": "#/components/schemas/DispositivoUpdateDTO"
+						},
+						"type": "array"
+					},
+					"tecnologias": {
+						"items": {
+							"$ref": "#/components/schemas/TecnologiaUpdateDTO"
+						},
+						"type": "array"
+					},
+					"tecnologiaIds": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"capacidadeAlunos": {
+						"type": "number",
+						"format": "double"
+					},
+					"fotoSala": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"Dispositivo": {
+				"properties": {
+					"idDispositivo": {
+						"type": "number",
+						"format": "double"
+					},
+					"nomeDispositivo": {
+						"type": "string"
+					},
+					"tipoDispositivo": {
+						"type": "string"
+					},
+					"patrimonio": {
+						"type": "string"
+					},
+					"statusDispositivo": {
+						"type": "string"
+					},
+					"dataCriacao": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"dataAtualizacao": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"idDispositivo",
+					"nomeDispositivo",
+					"tipoDispositivo",
+					"statusDispositivo",
+					"dataCriacao",
+					"dataAtualizacao"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CreateDispositivo": {
+				"properties": {
+					"nomeDispositivo": {
+						"type": "string"
+					},
+					"tipoDispositivo": {
+						"type": "string"
+					},
+					"patrimonio": {
+						"type": "string"
+					},
+					"statusDispositivo": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"nomeDispositivo",
+					"tipoDispositivo"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UpdateDispositivo": {
+				"properties": {
+					"nomeDispositivo": {
+						"type": "string"
+					},
+					"tipoDispositivo": {
+						"type": "string"
+					},
+					"patrimonio": {
+						"type": "string"
+					},
+					"statusDispositivo": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			},
+			"AtualizarInventarioPayload": {
+				"properties": {
+					"dispositivo": {
+						"properties": {
+							"statusDispositivo": {
+								"type": "string"
+							},
+							"patrimonio": {
+								"type": "string"
+							},
+							"tipoDispositivo": {
+								"type": "string"
+							},
+							"nomeDispositivo": {
+								"type": "string"
+							},
+							"idDispositivo": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"tipoDispositivo",
+							"nomeDispositivo"
+						],
+						"type": "object"
+					},
+					"inventario": {
+						"properties": {
+							"data": {
+								"properties": {
+									"tecnologiaIds": {
+										"items": {
+											"type": "number",
+											"format": "double"
+										},
+										"type": "array"
+									},
+									"salaId": {
+										"type": "number",
+										"format": "double"
+									},
+									"id": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"salaId"
+								],
+								"type": "object"
+							},
+							"type": {
+								"type": "string",
+								"enum": [
+									"create",
+									"update"
+								]
+							}
+						},
+						"required": [
+							"data",
+							"type"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"dispositivo",
+					"inventario"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"_36_Enums.TipoUser": {
+				"type": "string",
+				"enum": [
+					"DOCENTE",
+					"TI",
+					"ADM"
+				]
+			},
+			"TipoUser": {
+				"$ref": "#/components/schemas/_36_Enums.TipoUser"
+			},
+			"CreateUser": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"tipoUser": {
+						"$ref": "#/components/schemas/TipoUser"
+					}
+				},
+				"required": [
+					"email",
+					"tipoUser"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"_36_Enums.StatusConta": {
+				"type": "string",
+				"enum": [
+					"DESATIVADA",
+					"ATIVA",
+					"CONVIDADA"
+				]
+			},
+			"StatusConta": {
+				"$ref": "#/components/schemas/_36_Enums.StatusConta"
+			},
+			"TecnologiaSolicitadaPayload": {
+				"properties": {
+					"nome": {
+						"type": "string"
+					},
+					"versao": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"nome",
+					"versao"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CreateChamadaRequest": {
+				"properties": {
+					"salaId": {
+						"type": "number",
+						"format": "double"
+					},
+					"usuarioId": {
+						"type": "number",
+						"format": "double"
+					},
+					"dispositivoId": {
+						"type": "number",
+						"format": "double"
+					},
+					"dispositivo": {
+						"type": "string"
+					},
+					"patrimonio": {
+						"type": "string"
+					},
+					"tipoProblema": {
+						"type": "string",
+						"enum": [
+							"Hardware",
+							"Software"
+						]
+					},
+					"descricao": {
+						"type": "string"
+					},
+					"anexos": {
+						"type": "string"
+					},
+					"tecnologias": {
+						"items": {
+							"$ref": "#/components/schemas/TecnologiaSolicitadaPayload"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"salaId",
+					"usuarioId",
+					"tipoProblema"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"_36_Enums.ChamadaStatus": {
+				"type": "string",
+				"enum": [
+					"ABERTO",
+					"EM_ATENDIMENTO",
+					"RESOLVIDO"
+				]
+			},
+			"ChamadaStatus": {
+				"$ref": "#/components/schemas/_36_Enums.ChamadaStatus"
+			},
+			"UpdateStatusRequest": {
+				"properties": {
+					"status": {
+						"$ref": "#/components/schemas/ChamadaStatus"
+					},
+					"tecnicoId": {
+						"type": "number",
+						"format": "double"
+					},
+					"acoesRealizadas": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"status",
+					"tecnicoId"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"Agendamento": {
+				"properties": {
+					"idAgendamento": {
+						"type": "number",
+						"format": "double"
+					},
+					"salaId": {
+						"type": "number",
+						"format": "double"
+					},
+					"salaNome": {
+						"type": "string"
+					},
+					"usuarioId": {
+						"type": "number",
+						"format": "double"
+					},
+					"dataAgendamento": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"horaInicio": {
+						"type": "string"
+					},
+					"horaFim": {
+						"type": "string"
+					},
+					"descricao": {
+						"type": "string"
+					},
+					"statusAgendamento": {
+						"type": "string"
+					},
+					"criadoEm": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"atualizadoEm": {
+						"type": "string",
+						"format": "date-time"
+					}
+				},
+				"required": [
+					"idAgendamento",
+					"salaId",
+					"dataAgendamento",
+					"horaInicio",
+					"horaFim",
+					"statusAgendamento",
+					"criadoEm",
+					"atualizadoEm"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"CreateAgendamento": {
+				"properties": {
+					"salaId": {
+						"type": "number",
+						"format": "double"
+					},
+					"usuarioId": {
+						"type": "number",
+						"format": "double"
+					},
+					"dataAgendamento": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"horaInicio": {
+						"type": "string"
+					},
+					"horaFim": {
+						"type": "string"
+					},
+					"descricao": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"salaId",
+					"dataAgendamento",
+					"horaInicio",
+					"horaFim"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"SolicitarReserva": {
+				"properties": {
+					"salaId": {
+						"type": "number",
+						"format": "double"
+					},
+					"usuarioId": {
+						"type": "number",
+						"format": "double"
+					},
+					"dataAgendamento": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"horaInicio": {
+						"type": "string"
+					},
+					"horaFim": {
+						"type": "string"
+					},
+					"descricao": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"salaId",
+					"usuarioId",
+					"dataAgendamento",
+					"horaInicio",
+					"horaFim"
+				],
+				"type": "object",
+				"additionalProperties": true
+			},
+			"UpdateAgendamento": {
+				"properties": {
+					"salaId": {
+						"type": "number",
+						"format": "double"
+					},
+					"dataAgendamento": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"horaInicio": {
+						"type": "string"
+					},
+					"horaFim": {
+						"type": "string"
+					},
+					"descricao": {
+						"type": "string"
+					},
+					"statusAgendamento": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": true
+			}
+		},
+		"securitySchemes": {
+			"jwt": {
+				"type": "apiKey",
+				"name": "Authorization",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "backend_pi_4_semestre",
+		"version": "1.0.0",
+		"description": "1. Inicialização e Estrutura de Pastas\r Abra o terminal na pasta do projeto e execute:",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Jhon"
+		}
+	},
+	"paths": {
+		"/Usuarios/me": {
+			"get": {
+				"operationId": "GetMe",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Usuarios"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM",
+							"DOCENTE",
+							"TI"
+						]
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/Usuarios/foto/{userId}": {
+			"get": {
+				"operationId": "GetFoto",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"msg": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"msg"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Usuarios"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM",
+							"DOCENTE",
+							"TI"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/Usuarios/list-users": {
+			"get": {
+				"operationId": "ListAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Usuarios"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/Usuarios/delete-user/{userId}": {
+			"delete": {
+				"operationId": "DeleteUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Usuarios"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/tecnologias": {
+			"post": {
+				"operationId": "CriarTecnologia",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Tecnologia"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tecnologias"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateTecnologia"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "ListarTecnologias",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"total": {
+											"type": "number",
+											"format": "double"
+										},
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/Tecnologia"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"total",
+										"data"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tecnologias"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pagina",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limite",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "busca",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/tecnologias/{id}": {
+			"get": {
+				"operationId": "ObterTecnologia",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Tecnologia"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tecnologias"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "AtualizarTecnologia",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Tecnologia"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Tecnologias"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateTecnologia"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeletarTecnologia",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Tecnologias"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/inventarios": {
+			"post": {
+				"operationId": "CriarInventario",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Inventario"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Inventários"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateInventario"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "ListarInventarios",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"total": {
+											"type": "number",
+											"format": "double"
+										},
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/Inventario"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"total",
+										"data"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Inventários"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pagina",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limite",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "Search_Sala",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/inventarios/busca/palavraChave": {
+			"get": {
+				"operationId": "BuscaPorPalavraChave",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"total": {
+											"type": "number",
+											"format": "double"
+										},
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/SalasComInventario"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"total",
+										"data"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Inventários"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "busca",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "pagina",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limite",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/inventarios/sala/{salaId}": {
+			"get": {
+				"operationId": "ObterInventarioPorSala",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Inventario"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Inventários"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "salaId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/inventarios/{id}": {
+			"get": {
+				"operationId": "ObterInventario",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Inventario"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Inventários"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "AtualizarInventario",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Inventario"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Inventários"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateInventario"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeletarInventario",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Inventários"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/inventarios/upload": {
+			"post": {
+				"operationId": "UploadFoto",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"url": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Inventários"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"file": {
+										"type": "string",
+										"format": "binary"
+									}
+								},
+								"required": [
+									"file"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/dispositivos": {
+			"post": {
+				"operationId": "CriarDispositivo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Dispositivo"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Dispositivos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateDispositivo"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/dispositivos/list-devices": {
+			"get": {
+				"operationId": "ListarDispositivos",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"total": {
+											"type": "number",
+											"format": "double"
+										},
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/Dispositivo"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"total",
+										"data"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Dispositivos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pagina",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limite",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tipo",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "busca",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/dispositivos/get-device/{id}": {
+			"get": {
+				"operationId": "ObterDispositivo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Dispositivo"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Dispositivos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/dispositivos/update-device/{id}": {
+			"put": {
+				"operationId": "AtualizarDispositivo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Dispositivo"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Dispositivos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateDispositivo"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/dispositivos/delete-device/{id}": {
+			"delete": {
+				"operationId": "DeletarDispositivo",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Dispositivos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/dispositivos/atualizar-inventario": {
+			"post": {
+				"operationId": "AtualizarInventarioCompleto",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Inventario"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Dispositivos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AtualizarInventarioPayload"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Coordenacao/Criar_Usuario": {
+			"post": {
+				"operationId": "HandleCreateUser",
+				"responses": {
+					"201": {
+						"description": "Created",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"400": {
+						"description": "Validation Failed"
+					}
+				},
+				"tags": [
+					"coordenador"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateUser"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Coordenacao/listar": {
+			"get": {
+				"operationId": "HandleFindUsers",
+				"responses": {
+					"200": {
+						"description": "Search Completed",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"400": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"msg": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"msg"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"coordenador"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tipoUser",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/TipoUser"
+						}
+					},
+					{
+						"in": "query",
+						"name": "statusConta",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/StatusConta"
+						}
+					}
+				]
+			}
+		},
+		"/Coordenacao/find-by-id/{id_user}": {
+			"get": {
+				"operationId": "HandleFindUserById",
+				"responses": {
+					"200": {
+						"description": "Search Completed",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"400": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"msg": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"msg"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"coordenador"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id_user",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "statusConta",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/StatusConta"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tipoUser",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/TipoUser"
+						}
+					}
+				]
+			}
+		},
+		"/Coordenacao/desativa-user": {
+			"patch": {
+				"operationId": "HandleDesativarUser",
+				"responses": {
+					"200": {
+						"description": "Sucesso ao alterar status do usuário",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"400": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"msg": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"msg"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"coordenador"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "idUser",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "statusUser",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/StatusConta"
+						}
+					}
+				]
+			}
+		},
+		"/chamados": {
+			"post": {
+				"operationId": "Criar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Chamados"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI",
+							"DOCENTE"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateChamadaRequest"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "Listar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Chamados"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/ChamadaStatus"
+						}
+					}
+				]
+			}
+		},
+		"/chamados/meus-chamados": {
+			"get": {
+				"operationId": "ListarChamadosDoUsuario",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Chamados"
+				],
+				"security": [
+					{
+						"jwt": [
+							"DOCENTE",
+							"TI"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/ChamadaStatus"
+						}
+					}
+				]
+			}
+		},
+		"/chamados/{id}/status": {
+			"put": {
+				"operationId": "AtualizarStatus",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Chamados"
+				],
+				"security": [
+					{
+						"jwt": [
+							"TI"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateStatusRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Auth/login": {
+			"get": {
+				"operationId": "Login",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"autenticacao"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/Auth/callback": {
+			"get": {
+				"operationId": "HandleCallback",
+				"responses": {
+					"200": {
+						"description": "Autenticado",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"500": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"error": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"error"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"autenticacao"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/Auth/refresh": {
+			"get": {
+				"operationId": "Refresh",
+				"responses": {
+					"200": {
+						"description": "TokenRenovado",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"accessToken": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"accessToken"
+									],
+									"type": "object"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"error": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"error"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"autenticacao"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/Auth/user-photo/{userId}": {
+			"get": {
+				"operationId": "GetUserPhoto",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"404": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"msg": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"msg"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"autenticacao"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/Auth/logout": {
+			"get": {
+				"operationId": "Logout",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"message": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"message"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"autenticacao"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/agendamentos/frequencia": {
+			"get": {
+				"operationId": "GetFrequencia",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"properties": {
+											"total": {
+												"type": "number",
+												"format": "double"
+											},
+											"salaNome": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"total",
+											"salaNome"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/agendamentos": {
+			"post": {
+				"operationId": "CriarAgendamento",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Agendamento"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM",
+							"DOCENTE"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateAgendamento"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "ListarAgendamentos",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"total": {
+											"type": "number",
+											"format": "double"
+										},
+										"data": {
+											"items": {
+												"$ref": "#/components/schemas/Agendamento"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"total",
+										"data"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM",
+							"DOCENTE"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "pagina",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limite",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "salaId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "dataInicio",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "dataFim",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/agendamentos/solicitar-reserva": {
+			"post": {
+				"operationId": "SolicitarReserva",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Agendamento"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM",
+							"DOCENTE"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SolicitarReserva"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/agendamentos/meus-agendamentos": {
+			"get": {
+				"operationId": "ListarMinhasReservas",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Agendamento"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"DOCENTE"
+						]
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/agendamentos/sala/{salaId}": {
+			"get": {
+				"operationId": "ListarAgendamentosPorSala",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Agendamento"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM",
+							"DOCENTE"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "salaId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "dataInicio",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "dataFim",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/agendamentos/{id}": {
+			"get": {
+				"operationId": "ObterAgendamento",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/Agendamento"
+										}
+									],
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "AtualizarAgendamento",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Agendamento"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateAgendamento"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeletarAgendamento",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/agendamentos/{id}/solicitar-alteracao": {
+			"post": {
+				"operationId": "SolicitarAlteracao",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Agendamento"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"DOCENTE"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateAgendamento"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/agendamentos/{id}/aprovar": {
+			"post": {
+				"operationId": "AprovarAgendamento",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Agendamento"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/agendamentos/{id}/cancelar": {
+			"post": {
+				"operationId": "CancelarAgendamento",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Agendamento"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"ADM"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/agendamentos/{id}/cancelar-docente": {
+			"post": {
+				"operationId": "CancelarAgendamentoDocente",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Agendamento"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Agendamentos"
+				],
+				"security": [
+					{
+						"jwt": [
+							"DOCENTE"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
