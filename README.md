@@ -1,4 +1,7 @@
-# 🏫 SalaFácil
+<div align="center">
+  <h1>🏫 SalaFácil</h1>
+  <img width="300" height="350" alt="image" src="https://github.com/user-attachments/assets/f99bb286-7e07-4db9-8282-2273e3a1f64f" />
+</div>
 
 > **Projeto Interdisciplinar - 4º Semestre | Desenvolvimento de Software Multiplataforma** > Faculdade de Tecnologia de São Paulo - FATEC Itaquera
 
@@ -33,75 +36,6 @@ O projeto foi construído utilizando Arquitetura em Camadas (N-Tier Architecture
 * **Cloudinary SDK** + **Multer** + **Sharp** (Processamento e armazenamento em nuvem de imagens)
 * **Zod** (Validação de schemas e payloads)
 * **Brevo SDK** (Disparo de e-mails transacionais via API REST)
-
----
-
-## ⚙️ Como executar o projeto localmente
-
-Como o repositório agora unifica o Front-end e o Back-end, você precisará rodar ambos os serviços. 
-
-### Pré-requisitos
-* [Node.js](https://nodejs.org/en/) (v18 ou superior)
-* Conta no [Neon Tech](https://neon.tech/) (para o banco de dados PostgreSQL)
-* Conta no [Microsoft Azure](https://portal.azure.com/) (para as credenciais do Active Directory)
-* *Opcional:* Docker Desktop (para rodar o backend via contêiner)
-
-### 1. Clonando o repositório
-\`\`\`bash
-git clone https://github.com/SEU_USUARIO/salafacil.git
-cd salafacil
-\`\`\`
-
-### 2. Configurando o Back-End
-\`\`\`bash
-cd backend
-
-# Instale as dependências
-npm install
-
-# Crie um arquivo .env na raiz da pasta backend baseado no .env.example e preencha suas variáveis
-# (DATABASE_URL, CLIENT_ID, CLIENT_SECRET, SECRET_JWT, etc.)
-
-# Sincronize o banco de dados com o Prisma
-npx prisma db push
-
-# (Opcional) Popule o banco com os usuários iniciais
-npm run prisma:seed
-
-# Gere as rotas automáticas do TSOA
-npm run tsoa
-
-# Inicie o servidor de desenvolvimento
-npm run dev
-\`\`\`
-O servidor iniciará em \`http://localhost:3000\`. A documentação do Swagger estará disponível em \`http://localhost:3000/api-docs\`.
-
-### 3. Configurando o Front-End
-Em um novo terminal, navegue até a pasta do frontend:
-\`\`\`bash
-cd frontend
-
-# Instale as dependências
-npm install
-
-# Crie um arquivo .env na raiz do frontend e defina a URL da API, por exemplo:
-# VITE_API_URL=http://localhost:3000
-
-# Inicie a aplicação Vite
-npm run dev
-\`\`\`
-O frontend estará acessível em \`http://localhost:5173\`.
-
----
-
-## 🐳 Execução via Docker (Back-End)
-Se preferir rodar o backend de forma isolada, utilize o Dockerfile incluso:
-
-\`\`\`bash
-cd backend
-docker build -t salafacil-backend .
-docker run -p 3000:3000 --env-file .env salafacil-backend
-\`\`\`
 
 ---
 
