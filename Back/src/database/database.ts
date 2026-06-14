@@ -2,8 +2,8 @@ import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import pg from 'pg'
 
-import { any } from "zod";
-import { tr } from "zod/locales";
+// import { any } from "zod";
+// import { tr } from "zod/locales";
 
 export class PrismaService extends PrismaClient{
     constructor(){

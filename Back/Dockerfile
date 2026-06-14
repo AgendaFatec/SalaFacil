@@ -1,4 +1,3 @@
-# Estágio 1: Build
 FROM node:20-slim AS builder
 
 RUN apt-get update && apt-get install -y openssl
@@ -6,7 +5,8 @@ RUN apt-get update && apt-get install -y openssl
 WORKDIR /app
 
 COPY package*.json ./
-# Instala todas as dependências (necessário para o tsoa e tsc rodarem)
+
+
 RUN npm install
 
 COPY . .
@@ -25,10 +25,10 @@ COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
-# COPY --from=builder /app/tsconfig.json ./tsconfig.json
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/tsconfig.json ./tsconfig.json
 
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 EXPOSE 3000
 
-# Usamos o start que você já testou e funcionou localmente
-CMD ["npm", "start"]
+CMD npx prisma db push --url "$DATABASE_URL" --accept-data-loss && npx tsx prisma/seed.ts && npm start

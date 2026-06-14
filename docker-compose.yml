@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./Front
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:3000
+    ports:
+      - "4173:4173"
+    networks:
+      - pi-network
+
+  backend:
+    build:
+      context: ./Back
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" 
+    env_file:
+      - ./Back/.env
+    environment:
+      - DATABASE_URL=postgresql://pi_user:pi_password@postgres-db:5432/pi_database?schema=public
+    networks:
+      - pi-network
+    depends_on:
+      - postgres-db
+
+  postgres-db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: pi_user
+      POSTGRES_PASSWORD: pi_password
+      POSTGRES_DB: pi_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - pi-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080" 
+    networks:
+      - pi-network
+
+networks:
+  pi-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

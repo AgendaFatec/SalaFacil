@@ -122,7 +122,7 @@ export class ApiService {
 
   public async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
     const res = await this.api.get<T>(url, config);
-    console.log(`\n\nresposta: ${res.data}\n`)
+    console.log('\n\nresposta:', res.data);
     return res.data;
   }
 

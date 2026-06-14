@@ -21,9 +21,14 @@ import cors from "cors"
 // prismaService.connect();
 
 const app = express();
+const isProduction = process.env.NODE_ENV === 'production';
+if (isProduction) {
+  app.set('trust proxy', 1);
+}
 
 const allowedOrigins = [
   '*',
+  'http://localhost:4173',
   'http://localhost:5173',
   'https://front-end-pi-4-semestre-fq6w.vercel.app'
 
@@ -39,9 +44,14 @@ app.use(morgan('dev'));
 app.use(session({
     secret: process.env.SESSION_SECRET || 'secret_fatec',
     resave: false,
-    saveUninitialized: false,
+    // saveUninitialized: false,
+    saveUninitialized: true,
     cookie:{
-      secure: process.env.NODE_ENV ==='production',
+      secure: isProduction,
+
+      sameSite: isProduction ? 'none' : 'lax',
+      maxAge: 24 * 60 * 60 * 1000,
+      
       httpOnly:true
     }
 }));
